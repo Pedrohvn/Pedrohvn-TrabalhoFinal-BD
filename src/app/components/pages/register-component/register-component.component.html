@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    
+</head>
+<body>
+    <div id="main-container" class="teste">
+        <h1>Cadastro</h1>
+        <form (ngSubmit)="submit()" id="register-form" [formGroup]="registerForm" #formDir="ngForm">
+            <div class="full-box">
+                <label for="email">E-mail</label>
+                <input formControlName="email" type="email" name="email" id="email" placeholder="Digite seu e-mail" autocomplete="off">
+                <div *ngIf="email.invalid && formDir.submitted" class="error-validation">
+                    <p *ngIf="email.errors?.['required']">Obrigatório</p>
+                </div>
+            </div>
+            <div class="full-box spacing">
+                <label for="name">Nome</label>
+                <input formControlName="fullName" type="text" name="name" id="name" placeholder="Digite seu nome">
+                <div *ngIf="fullName.invalid && formDir.submitted" class="error-validation">
+                    <p *ngIf="fullName.errors?.['required']" >Obrigatório</p>
+                </div>
+            </div>
+            <div class="half-box spacing">
+                <label for="password">Senha</label>
+                <input formControlName="password" type="password" name="password" id="password" placeholder="Digite sua senha">
+                <div *ngIf="password.invalid && formDir.submitted" class="error-validation">
+                    <p *ngIf="password.errors?.['required']" >Obrigatório</p>
+                </div>
+            </div>
+            <div class="half-box">
+                <label for="passconfirmation">Confirme sua senha</label>
+                <input formControlName="passconfirmation" type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha">
+                <div *ngIf="passconfirmation.invalid && formDir.submitted" class="error-validation">
+                    <p *ngIf="passconfirmation.errors?.['required']" >Obrigatório</p>
+                </div>
+            </div>
+            <div class="full-box">
+                <input type="submit" value="{{btnRegister}}" id="btn-submit" placeholder="Digite seu e-mail">
+            </div>
+        </form>
+    </div>
+    <p class="error-validarion template"></p>
+    <script src="register.js"></script>
+</body>
+</html>
